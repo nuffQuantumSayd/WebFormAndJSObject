@@ -11,7 +11,7 @@ function main():void{
 }
 
 /**
- * 
+ * Returns true or false depending if the target elements value is a valid string
  * @param id the target html element 
  * @returns if the html input element is a valid string
  */
@@ -27,6 +27,26 @@ function isValidString(id:string):boolean{
     return validString;
 }
 
+/**
+ * Returns true or false depending if the target elements value is a valid number
+ * @param id the target element id
+ * @returns if the html input element is a valid number
+ */
+function isValidNumber(id:string):boolean{
+    let isValidNumber = true;
+    let inputBox = <HTMLInputElement>getEle(id);
+    let inputBoxValue = inputBox.value;
+
+    //if the value is empty return false
+    if(inputBoxValue.trim() == ""){
+        return false;
+    }
+    //if the value isNan return false
+    if(isNaN(parseFloat(inputBoxValue))){
+        return false;
+    }
+    return isValidNumber;
+}
 
 
 /**
