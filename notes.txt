@@ -1,0 +1,17 @@
+1. Create a form with a minimum of 4 pieces of criteria to validate (ex. Name/Price/Description/Expiration Date)
+
+2. If there is any invalid data error messages should be shown
+
+3. Invalid input should display errors on the page, not in alert boxes
+
+4. Error messages should be descriptive
+
+5. If all input is valid the data should be displayed below the form
+
+6. You may choose how to display the data. Ex. Using heading/paragraphs/lists/etc
+
+7. Validation must be done in JavaScript or TypeScript NOT HTML ATTRIBUTES
+
+8. Project must be stored on GitHub and commits must be used. Minimum 7 commits
+
+9. Create a class and use an object of that type. Displaying data using an object is a simple way to achieve this and will be covered in lecture

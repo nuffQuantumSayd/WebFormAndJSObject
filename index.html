@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Form</title>
+    <style>
+        body{
+            background-image: linear-gradient(#274B74,#8233C5,#e963FD);
+            height: 100vh;
+        }
+        #container{
+            display: flex;
+        }
+        #errors-div > p{
+            margin-top: 20em;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            margin-left: 20%;
+            margin-top: 10%;
+            margin-right: 30%;
+        }
+        form > input{
+            padding: 1rem;
+            margin: .5em;
+            border-radius: 5px;
+            border: none;
+        }
+        form > button{
+
+            padding: 1rem;
+            margin: .5em;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        
+        <!--Name/Price/Description/Expiration Date-->
+        <form>
+            <input type="text" id="form-name" placeholder="Name">
+            <br>
+            <input type="text" id="form-price" placeholder="Price">
+            <br>
+            <input type="text" id="form-description" placeholder="Description">
+            <br>
+            <input type="text" id="form-expiration-date" placeholder="Expiration Date">
+            <br>
+            <button type="button">click to enter</button>
+        </form>
+        <div id="errors-div"><p>So many errors to write sldkfjal;dsfjlasdfj;laksdf</p></div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
