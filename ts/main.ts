@@ -1,6 +1,17 @@
 window.onload = function(){
-    
+    let submitBtn = getEle("form-button");
+    submitBtn.onclick = main;
 }
+
+class Product {
+    name:string;
+    price:number;
+    description:string;
+    date:Date;
+}
+
+function main(){
+    //alert("button clicked")
     //make a method to validate letters
         //if invalid we need to show a message in the errors-div
         //use isValidString()
@@ -11,8 +22,45 @@ window.onload = function(){
 
     //make a method to validate dates
         //if invalid we need to show a message in the errors-div
+    
+    //if isValidString and isValidNumber
+        //display the class information
+    if(isAllDataValid()){
+        alert("all is valid");
+    }
+}
 
+/**
+ * 
+ * @returns true if all the data is valid
+ */
+function isAllDataValid(){
+    let validity = true;
+    //name
+        //errormessage
+    if(!isValidString("form-name")){
+        errorMessage("You must enter a valid name", "#errors-div");
+        validity = false;
+    }
+    //price
+        //errormessage
+    if(!isValidNumber("form-price")){
+        errorMessage("You must enter a valid price", "#errors-div");
+        validity = false;
+    }
+    //description
+        //errormessage
+    if(isValidString("form-description")){
+        errorMessage("Please enter a brief description", "#errors-div");
+        validity = false;
+    }
+    
+    return validity;
+}
 
+function displayProductInfo(){
+
+}
 
 /**
  * Returns true or false depending if the target elements value is a valid string
@@ -25,9 +73,8 @@ function isValidString(id:string):boolean{
     let inputBoxValue = inputBox.value;
 
     //if input is empty validString is false
-    if(inputBoxValue.trim() == ""){
+    if(inputBoxValue == ""){
         validString = false;
-        errorMessage("You must enter a valid name", "#errors-div");
     }
     return validString;
 }
@@ -44,12 +91,10 @@ function isValidNumber(id:string):boolean{
 
     //if the value is empty return false
     if(inputBoxValue.trim() == ""){
-        errorMessage("You must enter a valid price", "#errors-div");
         return false;
     }
     //if the value isNan return false
     else if(isNaN(parseFloat(inputBoxValue))){
-        errorMessage("You must enter a valid price", "#errors-div");
         return false;
     }
     return validNumber;

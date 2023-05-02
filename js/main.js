@@ -1,12 +1,41 @@
 window.onload = function () {
+    var submitBtn = getEle("form-button");
+    submitBtn.onclick = main;
 };
+var Product = (function () {
+    function Product() {
+    }
+    return Product;
+}());
+function main() {
+    if (isAllDataValid()) {
+        alert("all is valid");
+    }
+}
+function isAllDataValid() {
+    var validity = true;
+    if (!isValidString("form-name")) {
+        errorMessage("You must enter a valid name", "#errors-div");
+        validity = false;
+    }
+    if (!isValidNumber("form-price")) {
+        errorMessage("You must enter a valid price", "#errors-div");
+        validity = false;
+    }
+    if (isValidString("form-description")) {
+        errorMessage("Please enter a brief description", "#errors-div");
+        validity = false;
+    }
+    return validity;
+}
+function displayProductInfo() {
+}
 function isValidString(id) {
     var validString = true;
     var inputBox = getEle(id);
     var inputBoxValue = inputBox.value;
-    if (inputBoxValue.trim() == "") {
+    if (inputBoxValue == "") {
         validString = false;
-        errorMessage("You must enter a valid name", "#errors-div");
     }
     return validString;
 }
@@ -15,11 +44,9 @@ function isValidNumber(id) {
     var inputBox = getEle(id);
     var inputBoxValue = inputBox.value;
     if (inputBoxValue.trim() == "") {
-        errorMessage("You must enter a valid price", "#errors-div");
         return false;
     }
     else if (isNaN(parseFloat(inputBoxValue))) {
-        errorMessage("You must enter a valid price", "#errors-div");
         return false;
     }
     return validNumber;
