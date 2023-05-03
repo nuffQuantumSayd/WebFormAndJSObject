@@ -32,8 +32,8 @@ function main(){
         //alert("all is valid"); ***test passed***
         //create the object
         //display the information
-        createProduct();
-        displayProductInfo();
+        let product:Product = createProduct();
+        displayProductInfo(product);
     }
 }
 
@@ -90,8 +90,18 @@ function isAllDataValid(){
     return validity;
 }
 
-function displayProductInfo(){
+function displayProductInfo(product:Product){
+    let displayDiv = getEle("display");
     
+    let productDisplayHeading = document.createElement("h2");
+    productDisplayHeading.innerText = product.name;
+    
+    let productDisplayInfo = document.createElement("p");
+    productDisplayInfo.innerText = `Price: ${product.price} Description: ${product.description} Expiration Date: ${product.date}`;
+
+    displayDiv.appendChild(productDisplayHeading);
+
+    displayDiv.appendChild(productDisplayInfo);
 }
 
 /**

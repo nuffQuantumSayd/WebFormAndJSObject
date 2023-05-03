@@ -10,8 +10,8 @@ var Product = (function () {
 function main() {
     clearErrorDiv();
     if (isAllDataValid()) {
-        createProduct();
-        displayProductInfo();
+        var product = createProduct();
+        displayProductInfo(product);
     }
 }
 function createProduct() {
@@ -47,7 +47,14 @@ function isAllDataValid() {
     }
     return validity;
 }
-function displayProductInfo() {
+function displayProductInfo(product) {
+    var displayDiv = getEle("display");
+    var productDisplayHeading = document.createElement("h2");
+    productDisplayHeading.innerText = product.name;
+    var productDisplayInfo = document.createElement("p");
+    productDisplayInfo.innerText = "Price: ".concat(product.price, " Description: ").concat(product.description, " Expiration Date: ").concat(product.date);
+    displayDiv.appendChild(productDisplayHeading);
+    displayDiv.appendChild(productDisplayInfo);
 }
 function isValidString(id) {
     var validString = true;
