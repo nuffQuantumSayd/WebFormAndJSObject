@@ -52,7 +52,7 @@ function displayProductInfo(product) {
     var productDisplayHeading = document.createElement("h2");
     productDisplayHeading.innerText = product.name;
     var productDisplayInfo = document.createElement("p");
-    productDisplayInfo.innerText = "Price: ".concat(product.price, " Description: ").concat(product.description, " Expiration Date: ").concat(product.date);
+    productDisplayInfo.innerText = "Price: ".concat(product.price, "\n     Description: ").concat(product.description, " \n     Expiration Date: ").concat(product.date);
     displayDiv.appendChild(productDisplayHeading);
     displayDiv.appendChild(productDisplayInfo);
 }

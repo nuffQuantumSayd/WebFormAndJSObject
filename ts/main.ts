@@ -97,7 +97,9 @@ function displayProductInfo(product:Product){
     productDisplayHeading.innerText = product.name;
     
     let productDisplayInfo = document.createElement("p");
-    productDisplayInfo.innerText = `Price: ${product.price} Description: ${product.description} Expiration Date: ${product.date}`;
+    productDisplayInfo.innerText = `Price: ${product.price}
+     Description: ${product.description} 
+     Expiration Date: ${product.date}`;
 
     displayDiv.appendChild(productDisplayHeading);
 
