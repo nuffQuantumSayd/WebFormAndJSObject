@@ -7,7 +7,7 @@ class Product {
     name:string;
     price:number;
     description:string;
-    date:Date;
+    date:string;
 }
 
 function main(){
@@ -26,12 +26,38 @@ function main(){
     //if isValidString and isValidNumber
         //display the class information
     //clear the form
-    
-    
+    clearErrorDiv();
+
     if(isAllDataValid()){
-        alert("all is valid");
+        //alert("all is valid"); ***test passed***
+        //create the object
+        //display the information
+        createProduct();
+        displayProductInfo();
     }
 }
+
+function createProduct():Product{
+    let product = new Product();
+    
+    product.name = getInput("form-name").value;
+    
+    let price = getInput("form-price").value;
+    product.price = parseFloat(price);
+    
+    product.description = getInput("form-description").value;
+    
+    product.date = getInput("form-expiration-date").value;
+    
+    console.log(product);
+    return product;
+}
+
+function clearErrorDiv(){
+    let errorSummary = getEle("errors-div");
+    errorSummary.innerText = "";
+}
+
 
 /**
  * 
@@ -57,12 +83,15 @@ function isAllDataValid(){
         errorMessage("Please enter a brief description", "errors-div");
         validity = false;
     }
+    if(!isValidString("form-expiration-date")){
+        errorMessage("Please choose an expiration date", "errors-div");
+    }
     
     return validity;
 }
 
 function displayProductInfo(){
-
+    
 }
 
 /**
@@ -120,6 +149,10 @@ function isValidNumber(id:string):boolean{
  */
 function getEle(id:string){
     return document.getElementById(id);
+}
+
+function getInput(id:string){
+    return <HTMLInputElement>document.getElementById(id);
 }
 
 /**

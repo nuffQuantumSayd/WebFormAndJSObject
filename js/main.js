@@ -8,9 +8,25 @@ var Product = (function () {
     return Product;
 }());
 function main() {
+    clearErrorDiv();
     if (isAllDataValid()) {
-        alert("all is valid");
+        createProduct();
+        displayProductInfo();
     }
+}
+function createProduct() {
+    var product = new Product();
+    product.name = getInput("form-name").value;
+    var price = getInput("form-price").value;
+    product.price = parseFloat(price);
+    product.description = getInput("form-description").value;
+    product.date = getInput("form-expiration-date").value;
+    console.log(product);
+    return product;
+}
+function clearErrorDiv() {
+    var errorSummary = getEle("errors-div");
+    errorSummary.innerText = "";
 }
 function isAllDataValid() {
     var validity = true;
@@ -25,6 +41,9 @@ function isAllDataValid() {
     if (!isValidString("form-description")) {
         errorMessage("Please enter a brief description", "errors-div");
         validity = false;
+    }
+    if (!isValidString("form-expiration-date")) {
+        errorMessage("Please choose an expiration date", "errors-div");
     }
     return validity;
 }
@@ -52,6 +71,9 @@ function isValidNumber(id) {
     return validNumber;
 }
 function getEle(id) {
+    return document.getElementById(id);
+}
+function getInput(id) {
     return document.getElementById(id);
 }
 function errorMessage(errorMessage, element) {
