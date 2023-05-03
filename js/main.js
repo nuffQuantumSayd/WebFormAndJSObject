@@ -15,15 +15,15 @@ function main() {
 function isAllDataValid() {
     var validity = true;
     if (!isValidString("form-name")) {
-        errorMessage("You must enter a valid name", "#errors-div");
+        errorMessage("You must enter a valid name", "errors-div");
         validity = false;
     }
     if (!isValidNumber("form-price")) {
-        errorMessage("You must enter a valid price", "#errors-div");
+        errorMessage("You must enter a valid price", "errors-div");
         validity = false;
     }
-    if (isValidString("form-description")) {
-        errorMessage("Please enter a brief description", "#errors-div");
+    if (!isValidString("form-description")) {
+        errorMessage("Please enter a brief description", "errors-div");
         validity = false;
     }
     return validity;
@@ -55,7 +55,8 @@ function getEle(id) {
     return document.getElementById(id);
 }
 function errorMessage(errorMessage, element) {
-    var errorList = document.createElement("p");
-    errorList.innerText = errorMessage;
-    getEle(element).appendChild(errorList);
+    var errorDiv = getEle(element);
+    var errorItem = document.createElement("p");
+    errorItem.innerText = errorMessage;
+    errorDiv.appendChild(errorItem);
 }

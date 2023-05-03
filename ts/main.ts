@@ -25,6 +25,9 @@ function main(){
     
     //if isValidString and isValidNumber
         //display the class information
+    //clear the form
+    
+    
     if(isAllDataValid()){
         alert("all is valid");
     }
@@ -39,19 +42,19 @@ function isAllDataValid(){
     //name
         //errormessage
     if(!isValidString("form-name")){
-        errorMessage("You must enter a valid name", "#errors-div");
+        errorMessage("You must enter a valid name", "errors-div");
         validity = false;
     }
     //price
         //errormessage
     if(!isValidNumber("form-price")){
-        errorMessage("You must enter a valid price", "#errors-div");
+        errorMessage("You must enter a valid price", "errors-div");
         validity = false;
     }
     //description
         //errormessage
-    if(isValidString("form-description")){
-        errorMessage("Please enter a brief description", "#errors-div");
+    if(!isValidString("form-description")){
+        errorMessage("Please enter a brief description", "errors-div");
         validity = false;
     }
     
@@ -125,7 +128,17 @@ function getEle(id:string){
  * @param element the parent of the element you wish to target 
  */
 function errorMessage(errorMessage:string, element:string){
-    let errorList = <HTMLElement>document.createElement("p");
-    errorList.innerText = errorMessage;
-    getEle(element).appendChild(errorList);
+    let errorDiv = getEle(element);
+    let errorItem = document.createElement("p");
+    errorItem.innerText = errorMessage;
+    errorDiv.appendChild(errorItem);
 }
+
+
+// example
+// function addErrorMessage(errorMessage:string) {
+//     let errorSummary = getEle("errors-div");
+//     let errorItem = document.createElement("p");
+//     errorItem.innerText = errorMessage;
+//     errorSummary.appendChild(errorItem);
+// }
